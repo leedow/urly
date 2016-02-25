@@ -17,20 +17,25 @@ var urly = function(href){
 	this.setParams = function(params){
 		for(key in params){
 			//if(this.params[key] != undefined){
+			if(key != '' && key != undefined && params[key] != '' && params[key] != undefined)
 			this.params[key] = params[key];	
+			if(this.params[key] != undefined && params[key] == '' || params[key] == undefined)
+				delete this.params[key];
 		}
 		var p = '';
 		var i = 0;
 		for(key in this.params){
-			if(i==0){
-				p = p + key + '=' + this.params[key];
-			} else {
-				p = p + '&' + key + '=' + this.params[key];
+			if(key != '' && key != undefined){
+				if(i==0){
+					p = p + key + '=' + this.params[key];
+				} else {
+					p = p + '&' + key + '=' + this.params[key];
+				}
+				i++;
 			}
-			i++;
 		}
 		this.paramsString = p;
-		this.href = this.href2 + this.paramsString;
+		this.href = this.href2 + '?' + this.paramsString;
 	}
 
 	this.init = function(href){
