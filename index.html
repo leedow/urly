@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="urly.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	
+
+	var test = new urly('http://test.com?p1=1&p2=2');
+	//console.log(test.getHref());
+	console.log('params：')
+	console.log(test.getParams());
+	console.log(test.getParams().p1);
+
+	test.setParams({
+		a: 1
+	});
+
+	console.log(test.getParams());
+
+	test.setParams({
+		a:2
+	});
+
+	console.log(test.getParams());
+
+</script>
+</body>
+</html>
